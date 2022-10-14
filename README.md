@@ -47,3 +47,6 @@ Here are some ideas to get you started:
 - 😄 Pronouns: ...
 - ⚡ Fun fact: ...
 -->
+## Snake eating my contribution graps
+![snake gif](https://github.com/GANESAN6124/Ganesan6124/blob/output/github-contribution-grid-snake.gif)
+![snake gif](https://github.com/YOUR_USERNAME/YOUR_USERNAME/blob/output/github-contribution-grid-snake.gif)
