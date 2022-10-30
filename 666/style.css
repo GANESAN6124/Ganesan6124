@@ -1,0 +1,16 @@
+*{margin:0;
+padding:0;
+
+}
+.header{
+	min-height:100vh;
+	width:100%;
+	background-image:url("IMG_20210408_190347.jpg");
+	
+	background-position:center;
+	background-size:cover;
+	position:relative;
+	color:blue;
+}
+
+	
