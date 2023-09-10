@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meta</title>
+    <style>
+        /* Base CSS styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        main {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #292929;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+
+        button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Style for input boxes and text area */
+        input[type="text"], textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #fff;
+            color: #000;
+        }
+
+        /* Style for buttons */
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .show-button,
+        .undo-button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+        }
+
+        /* Style for the output text area */
+        #output {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #fff;
+            color: #000;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1 id="heading">META</h1>
+    </header>
+    <main>
+        <h2>META Type</h2>
+        <p style="display:none" id="t1">Only One Place</p>
+		<p style="display:none" id="t2">Different Places in One Country</p>
+        <p style="display:none" id="t3">Different Places in Different Countries</p>
+
+		<button id="t" onclick="fun1()">type1</button>
+        <button id="t" onclick="fun2()">type2</button>
+        <button id="t" onclick="fun3()">type3</button>
+        <h2>Input Boxes and Text Area</h2>
+<div id="d1" style="display:none">
+        <label for="input1">Type 1:</label>
+        <input type="text" id="input1" onkeypress="e(event,51)">
+        <button id="showButton" >Show</button>
+       
+        <!-- Output text area -->
+        <textarea id="output" rows="5" ></textarea>
+		</div>
+
+
+
+		<div id="d2" style="display:none">
+        <label for="input2">Type 2:</label>
+        <input type="text" id="input2" onkeypress="e2(event,2)">
+        <input type="text" id="input2palce" onkeypress="e(event,52)">
+
+        <button id="showButton2" >Show</button>
+       
+        <!-- Output text area -->
+        <textarea id="output2" rows="5" ></textarea>
+		</div>
+		
+		
+		
+		<div id="d3" style="display:none">
+        <label for="input1">Type 3:</label>
+        <input type="text" id="input3" onkeypress="e2(event,3)">
+		<input type="text" id="input3palce" onkeypress="e(event,53)">
+        <button id="showButton3" >Show</button>
+       
+        <!-- Output text area -->
+        <textarea id="output3" rows="5" ></textarea>
+		</div>
+		
+		
+    </main>
+
+    <script>
+        // JavaScript code goes here
+        const input1 = document.getElementById("input1");
+        const input2 = document.getElementById("input2");
+        const input3 = document.getElementById("input3");
+        const input2palce = document.getElementById("input2palce");
+        const input3palce = document.getElementById("input3palce");
+
+        const showButton = document.getElementById("showButton");
+		const showButton2 = document.getElementById("showButton2");
+		const showButton3 = document.getElementById("showButton3");
+		
+        const output = document.getElementById("output");
+        const output2 = document.getElementById("output2");
+        const output3 = document.getElementById("output3");
+		
+
+        // Array to store input values
+        const inputValues = [];
+		
+
+        showButton.addEventListener("click", () => {
+            // Get the value from Input 1
+            const inputValue1 = input1.value.trim();
+			output.value="";
+            const result = inputValue1.trim();
+		    output.value = "hi this first "+result+ " this last \n\n\nupper "+result+" one is titl "+result;
+			
+			// inputValues.pop();
+			
+        });
+			showButton2.addEventListener("click", () => {
+            const inputValue2 = input2.value.trim();
+            const inputValue2place = titleCase(input2palce.value);
+			output2.value="";
+            const result = inputValue2.trim();
+            const result2 = inputValue2place.trim();
+			output2.value = "hi this first "+result+ " this last \n\n\nupper one is title "+ result2; 
+			
+        });
+		showButton3.addEventListener("click", () => {
+            const inputValue3 = input3.value.trim();
+            const inputValue3place = titleCase(input3palce.value);
+			output3.value="";
+            const result = inputValue3.trim();
+            const result3 =inputValue3place.trim();
+			output3.value = "hi this first "+result+ " this last \n\n\nupper one is title "+ result3; 
+			
+        });
+
+		v1=document.getElementById("t1");
+		v2=document.getElementById("t2");
+		v3=document.getElementById("t3");
+		d1=document.getElementById("d1");
+		d2=document.getElementById("d2");
+		d3=document.getElementById("d3");
+		function fun1(){
+		d3.style.display="none";v2.style.display="none";
+		d2.style.display="none";v3.style.display="none";
+		d1.style.display="block";v1.style.display="block";	
+		}
+		function fun2(){
+		d1.style.display="none";v2.style.display="block";
+		d3.style.display="none";v3.style.display="none";
+		d2.style.display="block";v1.style.display="none";	
+		}
+		function fun3(){
+		d1.style.display="none";v2.style.display="none";
+		d2.style.display="none";v1.style.display="none";
+		d3.style.display="block";v3.style.display="block";
+		}
+		function titleCase(str){
+		str = str.toLowerCase().split(' ');
+		for (var i=0; i<str.length;i++){
+		str[i].trim();
+		if(str[i]=="in"){
+		continue;}
+
+		str[i]=str[i].charAt(0).toUpperCase()+str[i].slice(1);
+		
+		
+		}	
+		return str.join(' ');
+		}
+		function e(event,st){
+		if (event.keyCode == 13 ){
+		switch(st){
+		case 51:
+			console.log("enter key is typ1");
+			document.getElementById("showButton").click();
+			break;
+		case 52:
+			console.log("enter key is typ2");
+			document.getElementById("showButton2").click();
+			break;
+		case 53:
+			console.log("enter key is typ3");
+			document.getElementById("showButton3").click();
+			break;
+			
+			
+		}}}
+		function e2(event,n){
+		if (event.keyCode == 13 ){
+		console.log("enter key is pressed");
+		switch(n){
+		case 2:
+			document.getElementById("input2palce").focus();
+			break;
+		case 3:
+			document.getElementById("input3palce").focus();
+			break;
+			}
+		}
+		}
+    </script>
+</body>
+</html>
