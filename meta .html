@@ -249,3 +249,44 @@
     </script>
 </body>
 </html>
+
+
+
+
+
+<h2>Google Map</h2>
+	<div>
+	<textarea id="googlemap" style="height:100px"></textarea>
+	</div>
+	<button id="showButton4" >Cut</button>	
+
+
+
+
+  
+	const gm = document.getElementById("googlemap");
+	showButton4.addEventListener("click", () => {
+		
+            let inputValue4 = gm.value;
+	    gm.value="";
+            gm.value = filter(inputValue4);
+		inputValue4 ="";		
+        });	
+	function filter(str){
+		const n=[];
+		for (var i=0; i<str.length;i++){
+			if(str[i]== '"' ){
+			n.push(i);
+			
+
+			}
+			}console.log(n);
+			const s=str.slice(n[0]+1,n[1])
+			return s;
+			
+
+				}
+
+
+
+
