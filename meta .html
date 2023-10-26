@@ -290,3 +290,125 @@
 
 
 
+
+
+
+<main>
+        <h2>META Type</h2>
+        <p style="display:none" id="t1">Only One Place</p>
+	    <p style="display:none" id="t2">Different Places in One Country</p>
+        <p style="display:none" id="t3">Different Places in Different Countries</p>
+
+
+	<button id="t" onclick="fun1()">Type1</button>
+    <button id="t" onclick="fun2()">Type2</button>
+    <button id="t" onclick="fun3()">Type3</button>
+	<button id="t" onclick="fun4()">Map</button>
+    <h2>Input Boxes and Text Area</h2>
+	<h2 style="display:none"  id="t4">Google Map</h2>
+	<div id="d1" style="display:none">
+        <label for="input1">Type 1:</label>
+        <input type="text" id="input1" onkeypress="e(event,51)">
+        <button id="showButton" >Show</button>
+     
+        <!-- Output text area -->
+        <textarea id="output" rows="5" ></textarea>
+		</div>
+
+
+
+	<div id="d2" style="display:none">
+        <label for="input2">Type 2:</label>
+        <input type="text" id="input2" onkeypress="e2(event,2)">
+        <input type="text" id="input2palce" onkeypress="e(event,52)">
+
+        <button id="showButton2" >Show</button>
+       
+        <!-- Output text area -->
+        <textarea id="output2" rows="5" ></textarea>
+		</div>
+		
+		
+		
+	<div id="d3" style="display:none">
+        <label for="input1">Type 3:</label>
+        <input type="text" id="input3" onkeypress="e2(event,3)">
+		<input type="text" id="input3palce" onkeypress="e(event,53)">
+        <button id="showButton3" >Show</button>
+       
+        <!-- Output text area -->
+        <textarea id="output3" rows="5" ></textarea>
+		</div>
+	
+	
+	<div id="d4" style="display:none">
+	<textarea id="googlemap" style="height:100px" onkeypress="e(event,54)"></textarea>
+	<button id="showButton4">Cut</button>
+	</div>
+
+	
+		
+    </main>
+
+
+
+
+		v1=document.getElementById("t1");
+		v2=document.getElementById("t2");
+		v3=document.getElementById("t3");
+		v4=document.getElementById("t4");
+		d1=document.getElementById("d1");
+		d2=document.getElementById("d2");
+		d3=document.getElementById("d3");
+		d4=document.getElementById("d4");
+		function fun1(){
+		d4.style.display="none";v4.style.display="none";
+		d3.style.display="none";v2.style.display="none";
+		d2.style.display="none";v3.style.display="none";
+		d1.style.display="block";v1.style.display="block";	
+		}
+		function fun2(){
+	
+		d4.style.display="none";v4.style.display="none";
+		d1.style.display="none";v2.style.display="block";
+		d3.style.display="none";v3.style.display="none";
+		d2.style.display="block";v1.style.display="none";	
+		}
+		function fun3(){
+
+		d4.style.display="none";v4.style.display="none";
+		d1.style.display="none";v2.style.display="none";
+		d2.style.display="none";v1.style.display="none";
+		d3.style.display="block";v3.style.display="block";
+		}
+		function fun4(){
+
+		d4.style.display="block";v4.style.display="block";
+		d1.style.display="none";v2.style.display="none";
+		d2.style.display="none";v1.style.display="none";
+		d3.style.display="none";v3.style.display="none";
+		}
+			
+
+
+
+
+		function e(event,st){
+		if (event.keyCode == 13 ){
+		switch(st){
+		case 51:
+			console.log("enter key is typ1");
+			document.getElementById("showButton").click();
+			break;
+		case 52:
+			console.log("enter key is typ2");
+			document.getElementById("showButton2").click();
+			break;
+		case 53:
+			console.log("enter key is typ3");
+			document.getElementById("showButton3").click();
+			break;
+		case 54:
+			console.log("enter key is typ3");
+			document.getElementById("showButton4").click();
+			break;
