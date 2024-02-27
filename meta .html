@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+hhh<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -7,6 +7,9 @@
     <style>
         *{
             font-family:sans-serif;
+        }
+        :root{
+            --orange:green;
         }
         body {
             font-family: Arial, sans-serif;
@@ -22,7 +25,7 @@
             text-align: center;
         }
         .text{
-            background: linear-gradient(180deg, grey 10%, orange 60%);
+            background: linear-gradient(180deg, grey 10%, #87ff14 60%);
             font-family: sans-serif;
             font-size: 40px;
             text-transform: uppercase;
@@ -40,9 +43,9 @@
         }
 
         button {
-            background-color:orange ;
-            border-radius: 25px; 
-            border: 2px solid white;
+            background-color:#292929;
+            border-radius: 5px; 
+            border: 2px solid #87ff14;
             color: #fff ;
             padding: 10px 20px;
             cursor: pointer;
@@ -61,14 +64,14 @@
 
 
         button:hover {
-            background-color:white;            
-            border-radius: 25px; 
-            transform: scale(1.3); 
+            background-color:#87ff14;            
+            /* transform: scale(1.3);  */
             transition: 0.1s;
-            color: orange;
+            color: #000;
             font-weight: 300;
-            border: 2px solid orange ;
+            border: 2px solid #87ff14 ;
             z-index:2;
+            
             }
 
         /* Style for input boxes and text area */
@@ -77,7 +80,7 @@
             padding: 10px;
             margin-bottom: 10px;
             font-weight: 500;
-            border: 1px solid orange;
+            border: 1px solid #87ff14;
             border-radius: 5px;
             background-color: #fff;
             color: #000;
@@ -126,10 +129,13 @@
             animation: come 2s linear forwards;
             z-index: -1;
         }
+        #Company_meta{
+            display: none;
+        }
         @keyframes  come{
             0%{
                 transform: scale(2);
-                background-color: orange;
+                background-color: #87ff14;
             }
             10%{
                 transform: scale(1.5) translateY(0px);
@@ -153,16 +159,25 @@
                 background-color:black;
             }
         }
+        
+    
     </style>
 </head>
 <body>
    
     <header>
-        <h1 id="heading" class="text">META</h1>
-        
+        <h1 id="heading" class="text">META TAGS</h1>
+        <div style="display: inline-block;" class="flex-item"><button id="tt2" onclick="company_page()">Company</button></div>
+        <div style="display: inline-block;" class="flex-item"><button id="tt1" onclick="dynamicPage_meta()">Dynamic Page</button></div>
+
     </header>
     <main>
-        <h2 style="text-align: center;">META Type</h2>
+        
+    
+    
+
+
+    <div id="Company_meta">
         <p style="display:none;text-align: center;" id="t1">Only One Place</p>
 	    <p style="display:none;text-align: center;" id="t2">Different Places in One Country</p>
         <p style="display:none;text-align: center;" id="t3">Different Places in Different Countries</p>
@@ -171,10 +186,9 @@
 	<div class="flex-item"><button id="t" onclick="fun1()">Type1</button></div>
     <div class="flex-item"><button id="t" onclick="fun2()">Type2</button></div>
     <div class="flex-item"><button id="t" onclick="fun3()">Type3</button></div>
-	<div class="flex-item"><button id="t" onclick="fun4()">Map</button></div>
+	
 </div>
     <!-- <h2>Input Boxes and Text Area</h2> -->
-	<h2 style="display:none"  id="t4">Google Map</h2>
 	<div id="d1" style="display:none">
         <label for="input1">Type 1:</label>
         <input type="text" id="input1" onkeypress="e(event,51)" placeholder="Company name">
@@ -208,18 +222,23 @@
         <!-- Output text area -->
         <textarea id="output3" rows="5" ></textarea>
 		</div>
-	
-	
-	<div id="d4" style="display:none">
-	<textarea id="googlemap" style="height:100px" onkeypress="e(event,54)" ></textarea>
-	<button id="showButton4">Cut</button>
-	</div>
+</div>
+    <div id="dynamicPage_meta" style="display: none;">
+        <label for="input2"></label>
+        <input type="text" id="dynamicPage_meta_input" onkeypress="e(event,54) " placeholder="Enter the keyword">
+        <button id="showButton4" >Show</button>
 
-	
+       
+        <!-- Output text area -->
+        <textarea id="output4" rows="4" ></textarea>
+		
+
+</div>
 		
     </main>
 
     <script>
+        // console.log(window.innerHeight, window.innerWidth);
         // JavaScript code goes here
         const input1 = document.getElementById("input1");
         const input2 = document.getElementById("input2");
@@ -234,17 +253,23 @@
         const output = document.getElementById("output");
         const output2 = document.getElementById("output2");
         const output3 = document.getElementById("output3");
+        const output4 = document.getElementById("output4");
+
 	
         // Array to store input values
         const inputValues = [];
 	
-	const gm = document.getElementById("googlemap");
+
 	showButton4.addEventListener("click", () => {
-		
-            let inputValue4 = gm.value;
-	    gm.value="";
-            gm.value = filter(inputValue4);
-		inputValue4 ="";		
+		let input = document.getElementById("dynamicPage_meta_input").value.trim();
+        let option = [ `car ${input}`, `${input} bus`, `${input} train`];
+        output4.value = option[Math.floor(Math.random()*3)];
+        output4.select();
+        document.execCommand("copy");
+        window.getSelection().removeAllRanges();
+            
+				
+        input = "";
         });	
 	function filter(str)
 	{
@@ -280,8 +305,10 @@
 			output2.value="";
             const result = inputValue2.trim();
             const result2 = inputValue2place.trim();
-            //Change text ############################################
-			output2.value = "hi this first "+result+ " this last \n\n\nupper one is title "+ result2;
+            const mtag = [`hi this first ${result} this last \n\n\nupper one is title ${result2}`,`hi this second ${result} this last \n\n\nupper one is title ${result2}`]
+            
+            //Change text #####################d#######################
+			output2.value = mtag[Math.floor(Math.random()*2)];
             //Change text ############################################ 
 			
         });
@@ -305,33 +332,35 @@
 		d2=document.getElementById("d2");
 		d3=document.getElementById("d3");
 		d4=document.getElementById("d4");
-		function fun1(){
-		d4.style.display="none";v4.style.display="none";
+		function company_page(){
+            document.getElementById("Company_meta").style.display="block";
+            document.getElementById("dynamicPage_meta").style.display="none";document.getElementById("tt2").style.backgroundColor="#87ff14";
+            document.getElementById("tt1").style.backgroundColor="#333";
+        }
+        function dynamicPage_meta(){
+            document.getElementById("Company_meta").style.display="none";
+            document.getElementById("dynamicPage_meta").style.display="block";document.getElementById("tt1").style.backgroundColor="#87ff14";
+            document.getElementById("tt2").style.backgroundColor="#333";
+
+        }
+        function fun1(){
 		d3.style.display="none";v2.style.display="none";
 		d2.style.display="none";v3.style.display="none";
 		d1.style.display="block";v1.style.display="block";	
 		}
 		function fun2(){
 	
-		d4.style.display="none";v4.style.display="none";
 		d1.style.display="none";v2.style.display="block";
 		d3.style.display="none";v3.style.display="none";
 		d2.style.display="block";v1.style.display="none";	
 		}
 		function fun3(){
 
-		d4.style.display="none";v4.style.display="none";
 		d1.style.display="none";v2.style.display="none";
 		d2.style.display="none";v1.style.display="none";
 		d3.style.display="block";v3.style.display="block";
 		}
-		function fun4(){
-
-		d4.style.display="block";v4.style.display="block";
-		d1.style.display="none";v2.style.display="none";
-		d2.style.display="none";v1.style.display="none";
-		d3.style.display="none";v3.style.display="none";
-		}
+	
 
 		function titleCase(str){
 		str = str.toLowerCase().split(' ');
@@ -361,12 +390,8 @@
 			console.log("enter key is typ3");
 			document.getElementById("showButton3").click();
 			break;
-		case 54:
-			console.log("enter key is typ3");
-			document.getElementById("showButton4").click();
-			break;
-        
-			
+        case 54:
+            document.getElementById("showButton4").click();        		
 		}}}
 		function e2(event,n){
 		if (event.keyCode == 13 ){
